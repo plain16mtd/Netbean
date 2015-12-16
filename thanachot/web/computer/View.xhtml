@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewComputerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewComputerLabel_computerID}"/>
+                    <h:outputText value="#{computerController.selected.computerID}" title="#{bundle.ViewComputerTitle_computerID}"/>
+                    <h:outputText value="#{bundle.ViewComputerLabel_computerName}"/>
+                    <h:outputText value="#{computerController.selected.computerName}" title="#{bundle.ViewComputerTitle_computerName}"/>
+                    <h:outputText value="#{bundle.ViewComputerLabel_os}"/>
+                    <h:outputText value="#{computerController.selected.os}" title="#{bundle.ViewComputerTitle_os}"/>
+                    <h:outputText value="#{bundle.ViewComputerLabel_computerTypeID}"/>
+                    <h:outputText value="#{computerController.selected.computerTypeID}" title="#{bundle.ViewComputerTitle_computerTypeID}"/>
+                    <h:outputText value="#{bundle.ViewComputerLabel_manufacturerID}"/>
+                    <h:outputText value="#{computerController.selected.manufacturerID}" title="#{bundle.ViewComputerTitle_manufacturerID}"/>
+                    <h:outputText value="#{bundle.ViewComputerLabel_computeruser}"/>
+                    <h:outputText value="#{computerController.selected.computeruser}" title="#{bundle.ViewComputerTitle_computeruser}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{computerController.destroyAndView}" value="#{bundle.ViewComputerDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewComputerEditLink}"/>
+                <br />
+                <h:commandLink action="#{computerController.prepareCreate}" value="#{bundle.ViewComputerCreateLink}" />
+                <br />
+                <h:commandLink action="#{computerController.prepareList}" value="#{bundle.ViewComputerShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewComputerIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

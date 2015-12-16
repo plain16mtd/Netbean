@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateComputerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateComputerLabel_computerID}" for="computerID" />
+                    <h:inputText id="computerID" value="#{computerController.selected.computerID}" title="#{bundle.CreateComputerTitle_computerID}" required="true" requiredMessage="#{bundle.CreateComputerRequiredMessage_computerID}"/>
+                    <h:outputLabel value="#{bundle.CreateComputerLabel_computerName}" for="computerName" />
+                    <h:inputText id="computerName" value="#{computerController.selected.computerName}" title="#{bundle.CreateComputerTitle_computerName}" />
+                    <h:outputLabel value="#{bundle.CreateComputerLabel_os}" for="os" />
+                    <h:inputText id="os" value="#{computerController.selected.os}" title="#{bundle.CreateComputerTitle_os}" />
+                    <h:outputLabel value="#{bundle.CreateComputerLabel_computerTypeID}" for="computerTypeID" />
+                    <h:selectOneMenu id="computerTypeID" value="#{computerController.selected.computerTypeID}" title="#{bundle.CreateComputerTitle_computerTypeID}" >
+                        <f:selectItems value="#{computertypeController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateComputerLabel_manufacturerID}" for="manufacturerID" />
+                    <h:selectOneMenu id="manufacturerID" value="#{computerController.selected.manufacturerID}" title="#{bundle.CreateComputerTitle_manufacturerID}" >
+                        <f:selectItems value="#{manufacturerController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateComputerLabel_computeruser}" for="computeruser" />
+                    <h:selectOneMenu id="computeruser" value="#{computerController.selected.computeruser}" title="#{bundle.CreateComputerTitle_computeruser}" >
+                        <f:selectItems value="#{computeruserController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{computerController.create}" value="#{bundle.CreateComputerSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{computerController.prepareList}" value="#{bundle.CreateComputerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateComputerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
